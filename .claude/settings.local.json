@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cd /c/Users/PC/Documents/personal_projects/nodejs-architecture && npm audit 2>&1)",
+      "Bash(cd /c/Users/PC/Documents/personal_projects/nodejs-architecture && node -e \"require\\('./src/app.js'\\); console.log\\('App loaded OK'\\);\" 2>&1)",
+      "Bash(cd /c/Users/PC/Documents/personal_projects/nodejs-architecture && npm install --save-dev vitest supertest 2>&1)",
+      "Bash(cd /c/Users/PC/Documents/personal_projects/nodejs-architecture && npm test 2>&1)"
+    ]
+  }
+}
