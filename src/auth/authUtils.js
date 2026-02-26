@@ -6,13 +6,11 @@ const createTokenPair = async (payload, publicKey, privateKey) => {
   try {
     // accessToken
     //     privateKey không lưu vào database, chỉ diễn ra một lần khi chúng ta login thành công, nó sẽ đẩy qua browser
-    const accessToken = await JWT.sign(payload, privateKey, {
-      algorithm: "RS256",
+    const accessToken = await JWT.sign(payload, publicKey, {
       expiresIn: "2 days",
     });
     // refreshToken
     const refreshToken = await JWT.sign(payload, privateKey, {
-      algorithm: "RS256",
       expiresIn: "7 days",
     });
 
