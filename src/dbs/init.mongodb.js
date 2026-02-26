@@ -1,8 +1,13 @@
 "use strict";
 
 const mongoose = require("mongoose");
+const {
+  db: { host, name, port, user, pass },
+} = require("../configs/config.mongodb");
 const { countConnect } = require("../helpers/check.connect");
-const connectString = `mongodb://localhost:27017/nodejs-architecture`;
+const connectString = host.includes("mongodb.net")
+  ? `mongodb+srv://${user}:${pass}@${host}/${name}`
+  : `mongodb://${host}:${port}/${name}`;
 
 class Database {
   constructor() {
@@ -13,7 +18,7 @@ class Database {
       mongoose.set("debug", true);
       mongoose.set("debug", { color: true });
     }
-
+    console.log(`connectString::`, connectString);
     mongoose
       .connect(connectString, { maxPoolSize: 50 })
       .then(() => {

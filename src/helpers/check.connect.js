@@ -1,6 +1,7 @@
 "use strict";
 
 const mongoose = require("mongoose");
+
 const os = require("os");
 const process = require("process");
 const _SECONDS = 5000;
@@ -16,8 +17,8 @@ const checkOverloadConnect = () => {
     const numCores = os.cpus().length;
     const memoryUsage = process.memoryUsage().rss / (1024 * 1024); // Convert to MB
     const maxConnections = numCores * 5; // Assuming each core can handle 5 connections
-    console.log(`Active connections: ${numConnections}`);
-    console.log(`memoryUsage:: ${memoryUsage / 1024 / 1024} MB`);
+    // console.log(`Active connections: ${numConnections}`);
+    // console.log(`memoryUsage:: ${memoryUsage / 1024 / 1024} MB`);
     if (numConnections > maxConnections) {
       console.log(
         "Overload connections detected! Consider scaling up your database or optimizing queries.",
